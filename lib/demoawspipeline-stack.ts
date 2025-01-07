@@ -25,15 +25,15 @@ export class DemoawspipelineStack extends cdk.Stack {
       }),
     });
 
-    // const testingStage = democicdpipeline.addStage(new PipelineAppStage(this, 'test', {
-    //   env: { account: '196715057542', region: 'us-east-1' }
-    // }));
+    const testingStage = democicdpipeline.addStage(new PipelineAppStage(this, 'test', {
+      env: { account: '730335398069', region: 'us-east-1' }
+    }));
 
-    // testingStage.addPost(new ManualApprovalStep('approval'));
+    testingStage.addPost(new ManualApprovalStep('approval'));
 
-    // const prodStage = democicdpipeline.addStage(new PipelineAppStage(this, 'prod', {
-    //   env: { account: '196715057542', region: 'us-east-1' }
-    // }));
+    const prodStage = democicdpipeline.addStage(new PipelineAppStage(this, 'prod', {
+      env: { account: '730335398069', region: 'us-east-1' }
+    }));
 
 
   }
