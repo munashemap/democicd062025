@@ -12,11 +12,11 @@ export class DemoawspipelineStack extends cdk.Stack {
     // The code that defines your stack goes here
     // AWS CI-CD Pipeline
     const democicdpipeline = new CodePipeline(this,'demopipeline',
-{
+    {
       synth: new ShellStep('Synth', {
         // Use a connection created using the AWS console to authenticate to GitHub
         // Other sources are available.
-        input: CodePipelineSource.gitHub('Rahul1981/democicd021223', 'main'),
+        input: CodePipelineSource.gitHub('munashemap/democicd062025', 'main'),
         commands: [
           'npm ci',
           'npm run build',
@@ -25,15 +25,15 @@ export class DemoawspipelineStack extends cdk.Stack {
       }),
     });
 
-    const testingStage = democicdpipeline.addStage(new PipelineAppStage(this, 'test', {
-      env: { account: '196715057542', region: 'us-east-1' }
-    }));
+    // const testingStage = democicdpipeline.addStage(new PipelineAppStage(this, 'test', {
+    //   env: { account: '196715057542', region: 'us-east-1' }
+    // }));
 
-    testingStage.addPost(new ManualApprovalStep('approval'));
+    // testingStage.addPost(new ManualApprovalStep('approval'));
 
-    const prodStage = democicdpipeline.addStage(new PipelineAppStage(this, 'prod', {
-      env: { account: '196715057542', region: 'us-east-1' }
-    }));
+    // const prodStage = democicdpipeline.addStage(new PipelineAppStage(this, 'prod', {
+    //   env: { account: '196715057542', region: 'us-east-1' }
+    // }));
 
 
   }
